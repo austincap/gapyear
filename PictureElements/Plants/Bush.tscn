@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb2a1gg5d88w0"]
+
+[ext_resource type="Texture2D" uid="uid://ioucrk47lany" path="res://PictureElements/Plants/bush.png" id="1_5r105"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1k1xh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5r105")
+}],
+"loop": true,
+"name": &"bush",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4orn"]
+size = Vector2(26, 16)
+
+[node name="Bush" type="AnimatedSprite2D"]
+scale = Vector2(2.495, 2.495)
+sprite_frames = SubResource("SpriteFrames_1k1xh")
+animation = &"bush"
+
+[node name="Area2D" type="Area2D" parent="." groups=["selectable"]]
+collision_layer = 3
+collision_mask = 3
+metadata/points = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_g4orn")

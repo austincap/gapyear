@@ -1,12 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://b3xpfltnguk2w"]
+[gd_scene load_steps=16 format=3 uid="uid://b3xpfltnguk2w"]
 
 [ext_resource type="Texture2D" uid="uid://cwf5tl24pxtrl" path="res://PictureElements/heart.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://biuoovh57u00m" path="res://PictureElements/ground.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://cp1peonxh7scr" path="res://PictureElements/character.png" id="3"]
 [ext_resource type="Script" path="res://testworld.gd" id="4"]
-[ext_resource type="Texture2D" uid="uid://ccr5c7s38feme" path="res://PictureElements/eiffeltowen.png" id="5"]
 [ext_resource type="PackedScene" uid="uid://bii0nycod5tx" path="res://Player/PlayerController.tscn" id="6_lbwkk"]
 [ext_resource type="PackedScene" uid="uid://cokluhkctag2o" path="res://PictureElements/Animals/Bird.tscn" id="7_urxwo"]
+[ext_resource type="PackedScene" uid="uid://bb2a1gg5d88w0" path="res://PictureElements/Plants/Bush.tscn" id="8_10x6n"]
+[ext_resource type="PackedScene" uid="uid://bm40bhh0c10kh" path="res://PictureElements/Monuments/EiffelTower.tscn" id="8_056qi"]
+[ext_resource type="Texture2D" uid="uid://c8a3wwsgrik5i" path="res://PictureElements/Backgrounds/parkbg.png" id="9_mwrrh"]
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("1")
@@ -77,13 +79,6 @@ rotation = 0.218166
 scale = Vector2(0.183814, 0.269482)
 texture = ExtResource("3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1372.64, 532.061)
-rotation = 0.460767
-scale = Vector2(0.848495, 0.931806)
-texture = ExtResource("5")
-offset = Vector2(-24.8718, -76.5641)
-
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(600, -300)
 curve = SubResource("6")
@@ -116,6 +111,41 @@ skew = 5.66244e-05
 [node name="Bird" parent="." instance=ExtResource("7_urxwo")]
 scale = Vector2(1.78, 1.78)
 
+[node name="Bush" parent="." instance=ExtResource("8_10x6n")]
+position = Vector2(893, 467)
+rotation = 0.257376
+scale = Vector2(4.09727, 4.67862)
+
+[node name="Bush2" parent="." instance=ExtResource("8_10x6n")]
+position = Vector2(1083, 521)
+rotation = 0.257376
+scale = Vector2(4.09727, 4.67862)
+
+[node name="Bush3" parent="." instance=ExtResource("8_10x6n")]
+position = Vector2(1542, 737)
+rotation = 0.573018
+scale = Vector2(4.08198, 4.50538)
+
+[node name="EiffelTower" parent="." instance=ExtResource("8_056qi")]
+position = Vector2(1636, 402)
+rotation = 0.49721
+scale = Vector2(-1.11837, 0.883555)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -6
+position = Vector2(1403, 476)
+rotation = 0.442519
+scale = Vector2(1.88457, 1.8278)
+texture = ExtResource("9_mwrrh")
+
 [connection signal="area_entered" from="Bird/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Bush/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Bush2/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Bush3/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="EiffelTower/Area2D" to="." method="_on_area_2d_area_entered"]
 
 [editable path="Bird"]
+[editable path="Bush"]
+[editable path="Bush2"]
+[editable path="Bush3"]
+[editable path="EiffelTower"]
