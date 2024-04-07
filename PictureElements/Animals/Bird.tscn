@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://cokluhkctag2o"]
+
+[ext_resource type="Texture2D" uid="uid://cgytr8unnulf4" path="res://PictureElements/Animals/whiteburd.png" id="1_lmokd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwus1"]
+atlas = ExtResource("1_lmokd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0s801"]
+atlas = ExtResource("1_lmokd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tf3jm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwus1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0s801")
+}],
+"loop": true,
+"name": &"flap",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4orn"]
+size = Vector2(26, 16)
+
+[node name="Bird" type="AnimatedSprite2D"]
+scale = Vector2(2.495, 2.495)
+sprite_frames = SubResource("SpriteFrames_tf3jm")
+animation = &"flap"
+frame = 1
+frame_progress = 0.330457
+
+[node name="Area2D" type="Area2D" parent="." groups=["selectable"]]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_g4orn")

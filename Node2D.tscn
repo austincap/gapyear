@@ -1,0 +1,121 @@
+[gd_scene load_steps=14 format=3 uid="uid://b3xpfltnguk2w"]
+
+[ext_resource type="Texture2D" uid="uid://cwf5tl24pxtrl" path="res://PictureElements/heart.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://biuoovh57u00m" path="res://PictureElements/ground.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cp1peonxh7scr" path="res://PictureElements/character.png" id="3"]
+[ext_resource type="Script" path="res://testworld.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://ccr5c7s38feme" path="res://PictureElements/eiffeltowen.png" id="5"]
+[ext_resource type="PackedScene" uid="uid://bii0nycod5tx" path="res://Player/PlayerController.tscn" id="6_lbwkk"]
+[ext_resource type="PackedScene" uid="uid://cokluhkctag2o" path="res://PictureElements/Animals/Bird.tscn" id="7_urxwo"]
+
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("1")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("1")
+region = Rect2(0, 300, 300, 300)
+
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("1")
+region = Rect2(300, 300, 300, 300)
+
+[sub_resource type="SpriteFrames" id="5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1")
+}, {
+"duration": 1.0,
+"texture": SubResource("2")
+}, {
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve2D" id="6"]
+bake_interval = 200.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 590.16, 874.871, 0, 0, 0, 0, 1142.41, 1160.02, 0, 0, 0, 0, 1640.78, 1667.37, 0, 0, 0, 0, 1770.99, 2125.34, 0, 0, 0, 0, 1856.3, 2533.91, 0, 0, 0, 0, 1856.3, 3054.74, 0, 0, 0, 0, 1793.44, 3526.17, 0, 0, 0, 0, 1555.48, 3984.14, 0, 0, 0, 0, 1447.72, 4150.26, 0, 0, 0, 0, 832.612, 4656.24, 0, 0, 0, 0, -60.8682, 4876.24, 0, 0, 0, 0, -1129.45, 4588.89, 0, 0, 0, 0, -1834.36, 3771.74, 0, 0, 0, 0, -2013.95, 2644.79, 0, 0, 0, 0, -1758.03, 1787.23, 0, 0, 0, 0, -1304.56, 1248.45, 0, 0, 0, 0, -698.427, 844.36, 0, 0, 0, 0, -65.3582, 776.094, 0, 0, 0, 0, 590.16, 874.871)
+}
+point_count = 19
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("4")
+
+[node name="Heart" type="AnimatedSprite2D" parent="."]
+position = Vector2(101.293, 196.077)
+scale = Vector2(0.33258, 0.33258)
+sprite_frames = SubResource("5")
+frame = 1
+
+[node name="Heart2" type="AnimatedSprite2D" parent="."]
+position = Vector2(1251.99, 259.006)
+scale = Vector2(0.33258, 0.33258)
+sprite_frames = SubResource("5")
+frame = 1
+
+[node name="Ground" type="Sprite2D" parent="."]
+position = Vector2(526.107, 2503.03)
+scale = Vector2(6.36002, 6.72503)
+texture = ExtResource("2")
+
+[node name="Passerby" type="Sprite2D" parent="."]
+position = Vector2(1013.04, 485.157)
+rotation = 0.218166
+scale = Vector2(0.183814, 0.269482)
+texture = ExtResource("3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1372.64, 532.061)
+rotation = 0.460767
+scale = Vector2(0.848495, 0.931806)
+texture = ExtResource("5")
+offset = Vector2(-24.8718, -76.5641)
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(600, -300)
+curve = SubResource("6")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(590.16, 874.871)
+rotation = 0.476634
+
+[node name="Marker2D" type="Marker2D" parent="Path2D/PathFollow2D"]
+
+[node name="Guy" type="Sprite2D" parent="Path2D/PathFollow2D/Marker2D"]
+position = Vector2(5.32007, -17.9993)
+scale = Vector2(0.265, 0.265)
+texture = ExtResource("3")
+
+[node name="Marker2D" type="Marker2D" parent="Path2D/PathFollow2D/Marker2D"]
+
+[node name="Camera2D" type="Camera2D" parent="Path2D/PathFollow2D/Marker2D/Marker2D"]
+position = Vector2(65.7474, -293.88)
+ignore_rotation = false
+zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 10.0
+
+[node name="PlayerController" parent="Path2D/PathFollow2D/Marker2D/Marker2D/Camera2D" instance=ExtResource("6_lbwkk")]
+position = Vector2(-1000, -600)
+skew = 5.66244e-05
+
+[node name="Bird" parent="." instance=ExtResource("7_urxwo")]
+scale = Vector2(1.78, 1.78)
+
+[connection signal="area_entered" from="Bird/Area2D" to="." method="_on_area_2d_area_entered"]
+
+[editable path="Bird"]
