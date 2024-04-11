@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bii0nycod5tx"]
+[gd_scene load_steps=3 format=3 uid="uid://bii0nycod5tx"]
 
 [ext_resource type="Script" path="res://Player/PlayerController.gd" id="1_4mk8y"]
+[ext_resource type="AudioStream" uid="uid://bgphfrgo5iehh" path="res://Sounds/camera-shutter-and-flash-combined-6827.mp3" id="2_duwkj"]
 
 [node name="PlayerController" type="Node2D"]
 script = ExtResource("1_4mk8y")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(1, 1, 1, 0.211765)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_duwkj")
+volume_db = -14.112

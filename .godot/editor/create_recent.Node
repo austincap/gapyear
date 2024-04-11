@@ -1,8 +1,10 @@
-Sprite2D
-Marker2D
+AudioStreamPlayer2D
+AudioStreamPlayer
 CollisionShape2D
 Area2D
 AnimatedSprite2D
+Sprite2D
+Marker2D
 SubViewport
 SubViewportContainer
 Polygon2D

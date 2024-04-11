@@ -64,6 +64,10 @@ func _unhandled_input(event):
 			#var drag_end = event.position
 			print(area2d.position)
 			print("Left mouse button released.")
+			$AudioStreamPlayer.play()
+			#for x in area2d.get_overlapping_areas():
+			#	print(x.get_name())
+			
 	if event is InputEventMouseMotion and dragging:
 		queue_redraw()
 

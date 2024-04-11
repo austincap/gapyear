@@ -34,3 +34,12 @@ func _process(delta):
 func _on_area_2d_area_entered(area):
 	selecteditem.append(area)
 	print("AREA ENTEREd")
+
+
+func _on_area_2d_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	print("COMMONER AREASHAPE ENTERED")
+	print(area.get_name())
+	#print(local_shape_index)
+	#print(area.get_meta("points"))
+	#print(area.get_parent().get_name())
+	#self.modulate = Color(0,1,0)
