@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b3xpfltnguk2w"]
+[gd_scene load_steps=18 format=3 uid="uid://b3xpfltnguk2w"]
 
 [ext_resource type="Texture2D" uid="uid://cwf5tl24pxtrl" path="res://PictureElements/heart.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://biuoovh57u00m" path="res://PictureElements/ground.png" id="2"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bm40bhh0c10kh" path="res://PictureElements/Monuments/EiffelTower.tscn" id="8_056qi"]
 [ext_resource type="Texture2D" uid="uid://c8a3wwsgrik5i" path="res://PictureElements/Backgrounds/parkbg.png" id="9_mwrrh"]
 [ext_resource type="PackedScene" uid="uid://cx6i8fpylied3" path="res://PictureElements/People/CommonPeople1.tscn" id="10_iw88t"]
+[ext_resource type="PackedScene" uid="uid://ce5yh32oeguu6" path="res://Player/GUI.tscn" id="11_numfl"]
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("1")
@@ -140,20 +141,25 @@ scale = Vector2(1.88457, 1.8278)
 texture = ExtResource("9_mwrrh")
 
 [node name="CommonPeople1" parent="." instance=ExtResource("10_iw88t")]
-position = Vector2(1297, 592)
-rotation = 0.495205
-scale = Vector2(2.67903, 2.83208)
+position = Vector2(1829.59, 917.713)
+rotation = 0.701708
+scale = Vector2(3.91708, 3.68483)
+
+[node name="GUI" parent="." instance=ExtResource("11_numfl")]
+offset_left = 0.0
+offset_top = 116.0
+offset_right = 0.0
+offset_bottom = 116.0
+scale = Vector2(3.6, 3.16)
 
 [connection signal="area_entered" from="Bird/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Bush/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Bush2/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Bush3/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="EiffelTower/Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_shape_entered" from="CommonPeople1/Area2D" to="." method="_on_area_2d_area_shape_entered"]
 
 [editable path="Bird"]
 [editable path="Bush"]
 [editable path="Bush2"]
 [editable path="Bush3"]
 [editable path="EiffelTower"]
-[editable path="CommonPeople1"]

@@ -1,6 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cx6i8fpylied3"]
 
 [ext_resource type="Texture2D" uid="uid://dh4bihk6ihoxn" path="res://PictureElements/People/CommonPeople1.png" id="1_seim3"]
+[ext_resource type="Script" path="res://PictureElements/People/CommonPeople1.gd" id="2_06ods"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ti1m"]
 atlas = ExtResource("1_seim3")
@@ -32,26 +33,33 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hkgv1"]
-radius = 5.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m87ov"]
-size = Vector2(9, 8.5)
+radius = 4.12311
 
 [node name="CommonPeople1" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_m3o2y")
+script = ExtResource("2_06ods")
 metadata/points = 5
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="corearea" type="Area2D" parent="." groups=["core"]]
 metadata/points = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["target"]]
-position = Vector2(-1, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="corearea"]
 shape = SubResource("CircleShape2D_hkgv1")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" groups=["top"]]
-position = Vector2(-15, -21)
-shape = SubResource("RectangleShape2D_m87ov")
+[node name="target1" type="Area2D" parent="." groups=["target"]]
+metadata/points = 5
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D" groups=["bot"]]
-position = Vector2(13, 27)
-shape = SubResource("RectangleShape2D_m87ov")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="target1"]
+position = Vector2(14, 24)
+shape = SubResource("CircleShape2D_hkgv1")
+
+[node name="target2" type="Area2D" parent="." groups=["target"]]
+metadata/points = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="target2"]
+position = Vector2(-17, -21)
+shape = SubResource("CircleShape2D_hkgv1")
+
+[connection signal="area_shape_entered" from="corearea" to="." method="_on_corearea_area_shape_entered"]
+[connection signal="area_shape_entered" from="target1" to="." method="_on_target_1_area_shape_entered"]
+[connection signal="area_shape_entered" from="target2" to="." method="_on_target_2_area_shape_entered"]
