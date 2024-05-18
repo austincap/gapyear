@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b3xpfltnguk2w"]
+[gd_scene load_steps=20 format=3 uid="uid://b3xpfltnguk2w"]
 
 [ext_resource type="Texture2D" uid="uid://cwf5tl24pxtrl" path="res://PictureElements/heart.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://biuoovh57u00m" path="res://PictureElements/ground.png" id="2"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://c8a3wwsgrik5i" path="res://PictureElements/Backgrounds/parkbg.png" id="9_mwrrh"]
 [ext_resource type="PackedScene" uid="uid://cx6i8fpylied3" path="res://PictureElements/People/CommonPeople1.tscn" id="10_iw88t"]
 [ext_resource type="PackedScene" uid="uid://ce5yh32oeguu6" path="res://Player/GUI.tscn" id="11_numfl"]
+[ext_resource type="Texture2D" uid="uid://phyrsvmte58x" path="res://LevelBackgrounds/handmadebg.png" id="12_r4248"]
+[ext_resource type="PackedScene" uid="uid://b6q5qlduqthi7" path="res://PictureElements/People/CommonPeople2.tscn" id="13_m6jcy"]
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("1")
@@ -71,15 +73,10 @@ sprite_frames = SubResource("5")
 frame = 1
 
 [node name="Ground" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(526.107, 2503.03)
 scale = Vector2(6.36002, 6.72503)
 texture = ExtResource("2")
-
-[node name="Passerby" type="Sprite2D" parent="."]
-position = Vector2(1013.04, 485.157)
-rotation = 0.218166
-scale = Vector2(0.183814, 0.269482)
-texture = ExtResource("3")
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(600, -300)
@@ -110,40 +107,13 @@ rotation_smoothing_speed = 10.0
 position = Vector2(-1000, -600)
 skew = 5.66244e-05
 
-[node name="Bird" parent="." instance=ExtResource("7_urxwo")]
-scale = Vector2(1.78, 1.78)
-
-[node name="Bush" parent="." instance=ExtResource("8_10x6n")]
-position = Vector2(893, 467)
-rotation = 0.257376
-scale = Vector2(4.09727, 4.67862)
-
-[node name="Bush2" parent="." instance=ExtResource("8_10x6n")]
-position = Vector2(1083, 521)
-rotation = 0.257376
-scale = Vector2(4.09727, 4.67862)
-
-[node name="Bush3" parent="." instance=ExtResource("8_10x6n")]
-position = Vector2(1542, 737)
-rotation = 0.573018
-scale = Vector2(4.08198, 4.50538)
-
-[node name="EiffelTower" parent="." instance=ExtResource("8_056qi")]
-position = Vector2(1636, 402)
-rotation = 0.49721
-scale = Vector2(-1.11837, 0.883555)
-
 [node name="Background" type="Sprite2D" parent="."]
+visible = false
 z_index = -6
 position = Vector2(1403, 476)
 rotation = 0.442519
 scale = Vector2(1.88457, 1.8278)
 texture = ExtResource("9_mwrrh")
-
-[node name="CommonPeople1" parent="." instance=ExtResource("10_iw88t")]
-position = Vector2(1829.59, 917.713)
-rotation = 0.701708
-scale = Vector2(3.91708, 3.68483)
 
 [node name="GUI" parent="." instance=ExtResource("11_numfl")]
 offset_left = 0.0
@@ -152,14 +122,60 @@ offset_right = 0.0
 offset_bottom = 116.0
 scale = Vector2(3.6, 3.16)
 
-[connection signal="area_entered" from="Bird/Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_entered" from="Bush/Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_entered" from="Bush2/Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_entered" from="Bush3/Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_entered" from="EiffelTower/Area2D" to="." method="_on_area_2d_area_entered"]
+[node name="Handmadebg" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(1100, 2637)
+rotation = -0.549436
+scale = Vector2(22.625, 23.3617)
+texture = ExtResource("12_r4248")
 
-[editable path="Bird"]
-[editable path="Bush"]
-[editable path="Bush2"]
-[editable path="Bush3"]
-[editable path="EiffelTower"]
+[node name="CapturableEntities" type="Node2D" parent="."]
+z_index = -1
+z_as_relative = false
+
+[node name="CommonPeople2" parent="CapturableEntities" instance=ExtResource("13_m6jcy")]
+position = Vector2(2156, 1171)
+rotation = 0.676233
+scale = Vector2(3.64464, 3.76044)
+
+[node name="CommonPeople1" parent="CapturableEntities" instance=ExtResource("10_iw88t")]
+position = Vector2(1829.59, 917.713)
+rotation = 0.701708
+scale = Vector2(3.91708, 3.68483)
+
+[node name="EiffelTower" parent="CapturableEntities" instance=ExtResource("8_056qi")]
+position = Vector2(1636, 402)
+rotation = -2.64438
+scale = Vector2(1.11837, -0.883555)
+
+[node name="Bird" parent="CapturableEntities" instance=ExtResource("7_urxwo")]
+scale = Vector2(1.78, 1.78)
+
+[node name="Bush" parent="CapturableEntities" instance=ExtResource("8_10x6n")]
+position = Vector2(893, 467)
+rotation = 0.257376
+scale = Vector2(4.09727, 4.67862)
+
+[node name="Bush2" parent="CapturableEntities" instance=ExtResource("8_10x6n")]
+position = Vector2(1083, 521)
+rotation = 0.257376
+scale = Vector2(4.09727, 4.67862)
+
+[node name="Bush3" parent="CapturableEntities" instance=ExtResource("8_10x6n")]
+position = Vector2(1542, 737)
+rotation = 0.573018
+scale = Vector2(4.08198, 4.50538)
+
+[node name="PowerUps" type="Node2D" parent="."]
+
+[connection signal="area_entered" from="CapturableEntities/EiffelTower/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="CapturableEntities/Bird/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="CapturableEntities/Bush/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="CapturableEntities/Bush2/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="CapturableEntities/Bush3/Area2D" to="." method="_on_area_2d_area_entered"]
+
+[editable path="CapturableEntities/EiffelTower"]
+[editable path="CapturableEntities/Bird"]
+[editable path="CapturableEntities/Bush"]
+[editable path="CapturableEntities/Bush2"]
+[editable path="CapturableEntities/Bush3"]

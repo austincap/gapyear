@@ -5,12 +5,12 @@ extends AnimatedSprite2D
 func _ready():
 	pass # Replace with function body.
 signal capturedImage
-var points = 5
+var points = self.get_meta("points")
 var picpoints = [false, false, false]
 func checkpoints():
 	await get_tree().create_timer(0.1).timeout
 	if false in picpoints:
-		print("COPE")
+		print("BAD PIC")
 	else:
 		emit_signal("capturedImage", self)
 	picpoints = [false, false, false]

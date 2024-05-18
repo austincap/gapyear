@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://b6q5qlduqthi7"]
+
+[ext_resource type="Texture2D" uid="uid://dh4bihk6ihoxn" path="res://PictureElements/People/CommonPeople1.png" id="1_hkh66"]
+[ext_resource type="Script" path="res://PictureElements/People/CommonPeople1.gd" id="2_qhdyq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ti1m"]
+atlas = ExtResource("1_hkh66")
+region = Rect2(0, 240, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmmax"]
+atlas = ExtResource("1_hkh66")
+region = Rect2(48, 240, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3a2f2"]
+atlas = ExtResource("1_hkh66")
+region = Rect2(96, 240, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6mor"]
+atlas = ExtResource("1_hkh66")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkos7"]
+atlas = ExtResource("1_hkh66")
+region = Rect2(192, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xw8r"]
+atlas = ExtResource("1_hkh66")
+region = Rect2(240, 48, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m3o2y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ti1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmmax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3a2f2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6mor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkos7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xw8r")
+}],
+"loop": true,
+"name": &"guy2",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hkgv1"]
+radius = 4.12311
+
+[node name="CommonPeople2" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_m3o2y")
+animation = &"guy2"
+script = ExtResource("2_qhdyq")
+metadata/points = 2
+
+[node name="corearea" type="Area2D" parent="." groups=["core"]]
+metadata/points = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="corearea"]
+shape = SubResource("CircleShape2D_hkgv1")
+
+[node name="target1" type="Area2D" parent="." groups=["target"]]
+metadata/points = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="target1"]
+position = Vector2(14, 24)
+shape = SubResource("CircleShape2D_hkgv1")
+
+[node name="target2" type="Area2D" parent="." groups=["target"]]
+metadata/points = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="target2"]
+position = Vector2(-17, -21)
+shape = SubResource("CircleShape2D_hkgv1")
+
+[connection signal="area_shape_entered" from="corearea" to="." method="_on_corearea_area_shape_entered"]
+[connection signal="area_shape_entered" from="target1" to="." method="_on_target_1_area_shape_entered"]
+[connection signal="area_shape_entered" from="target2" to="." method="_on_target_2_area_shape_entered"]

@@ -9,8 +9,10 @@ var serv
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var CP1 = get_node("CommonPeople1")
-	CP1.connect("capturedImage", captured)
+	for entitynode in self.get_node("CapturableEntities").get_children ():
+		entitynode.connect("capturedImage", captured)
+	#var CP1 = get_node("CapturableEntities/CommonPeople1")
+	#CP1.connect("capturedImage", captured)
 	var tween = create_tween()
 	tween.tween_property($Heart,"position:x", 10, 600)
 	var tween2 = create_tween()
@@ -37,6 +39,8 @@ func _physics_process(delta):
 	pass
 
 func captured(entity):
+	print("CAPTURED")
+	print(entity.get_name())
 	print(entity.get_meta("points"))
 	var GUI = get_node("GUI")
 	GUI.global_position = entity.global_transform.origin

@@ -1,7 +1,7 @@
+Node2D
 Label
 Control
 Container
-Node2D
 AudioStreamPlayer2D
 AudioStreamPlayer
 CollisionShape2D
