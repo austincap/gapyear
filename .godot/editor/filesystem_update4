@@ -1,4 +1,5 @@
 res://default_env.tres
+res://PictureElements/Animals/DeadDog.tscn
 res://Node2D.tscn
 res://Player/PlayerController.tscn
 res://PictureElements/Plants/Bush.tscn
@@ -7,5 +8,5 @@ res://PictureElements/Monuments/EiffelTower.tscn
 res://PictureElements/People/CommonPeople1.tscn
 res://Player/GUI.tscn
 res://PictureElements/People/CommonPeople2.tscn
-res://PictureElements/People/CommonPeople1.gd
 res://testworld.gd
+res://Player/PlayerController.gd

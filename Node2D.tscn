@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b3xpfltnguk2w"]
+[gd_scene load_steps=21 format=3 uid="uid://b3xpfltnguk2w"]
 
 [ext_resource type="Texture2D" uid="uid://cwf5tl24pxtrl" path="res://PictureElements/heart.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://biuoovh57u00m" path="res://PictureElements/ground.png" id="2"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ce5yh32oeguu6" path="res://Player/GUI.tscn" id="11_numfl"]
 [ext_resource type="Texture2D" uid="uid://phyrsvmte58x" path="res://LevelBackgrounds/handmadebg.png" id="12_r4248"]
 [ext_resource type="PackedScene" uid="uid://b6q5qlduqthi7" path="res://PictureElements/People/CommonPeople2.tscn" id="13_m6jcy"]
+[ext_resource type="PackedScene" uid="uid://bpy1cfetkodim" path="res://PictureElements/Animals/DeadDog.tscn" id="14_ddx11"]
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("1")
@@ -139,7 +140,7 @@ rotation = 0.676233
 scale = Vector2(3.64464, 3.76044)
 
 [node name="CommonPeople1" parent="CapturableEntities" instance=ExtResource("10_iw88t")]
-position = Vector2(1829.59, 917.713)
+position = Vector2(1789, 904)
 rotation = 0.701708
 scale = Vector2(3.91708, 3.68483)
 
@@ -152,19 +153,24 @@ scale = Vector2(1.11837, -0.883555)
 scale = Vector2(1.78, 1.78)
 
 [node name="Bush" parent="CapturableEntities" instance=ExtResource("8_10x6n")]
-position = Vector2(893, 467)
-rotation = 0.257376
+position = Vector2(887, 543)
+rotation = 0.114913
 scale = Vector2(4.09727, 4.67862)
 
 [node name="Bush2" parent="CapturableEntities" instance=ExtResource("8_10x6n")]
-position = Vector2(1083, 521)
+position = Vector2(1092, 560)
 rotation = 0.257376
 scale = Vector2(4.09727, 4.67862)
 
 [node name="Bush3" parent="CapturableEntities" instance=ExtResource("8_10x6n")]
-position = Vector2(1542, 737)
+position = Vector2(1533, 755)
 rotation = 0.573018
 scale = Vector2(4.08198, 4.50538)
+
+[node name="DeadDog" parent="CapturableEntities" instance=ExtResource("14_ddx11")]
+position = Vector2(1973, 1093)
+rotation = 0.62119
+scale = Vector2(3.265, 3.265)
 
 [node name="PowerUps" type="Node2D" parent="."]
 

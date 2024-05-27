@@ -1,18 +1,13 @@
 extends Node2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
 var speed = 100
 var selecteditem = []
 var serv
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for entitynode in self.get_node("CapturableEntities").get_children ():
+	for entitynode in self.get_node("CapturableEntities").get_children():
 		entitynode.connect("capturedImage", captured)
-	#var CP1 = get_node("CapturableEntities/CommonPeople1")
-	#CP1.connect("capturedImage", captured)
 	var tween = create_tween()
 	tween.tween_property($Heart,"position:x", 10, 600)
 	var tween2 = create_tween()
@@ -42,7 +37,10 @@ func captured(entity):
 	print("CAPTURED")
 	print(entity.get_name())
 	print(entity.get_meta("points"))
-	var GUI = get_node("GUI")
+	#var GUI = get_node("GUI")
+	var pointGUI = load("res://Player/GUI.tscn")
+	var GUI = pointGUI.instantiate()
+	add_child(GUI)
 	GUI.global_position = entity.global_transform.origin
 	GUI.get_node("Label").text = str("+", entity.get_meta("points"))
 	await get_tree().create_timer(1.0).timeout
